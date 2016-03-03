@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- 注解扫描包 -->
+	<context:component-scan base-package="cn.nengliangba" />
+
+	<!-- 开启注解 -->
+	<mvc:annotation-driven />
+	
+	<!-- 数据源 
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/nengliangba?useUnicode=true&amp;characterEncoding=utf8" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>-->
+	<!--  -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="locations">  
+           <list>  
+                 <value>classpath:jdbc.properties</value>  
+           </list>  
+        </property>  
+    </bean> 
+	<!-- <util:properties id="druid" location="classpath:config/jdbc.properties">
+	</util:properties> -->
+	
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"  
+        destroy-method="close">  
+        <property name="url" value="jdbc:mysql://localhost:3306/nengliangba?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true" />  
+        <property name="username" value="root" />  
+        <property name="password" value="root" />  
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
+        <property name="filters" value="stat" />  
+  
+        <property name="maxActive" value="10" />
+        <property name="initialSize" value="1" />  
+        <property name="maxWait" value="60000" />  
+        <property name="minIdle" value="10" />  
+  
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />  
+        <property name="minEvictableIdleTimeMillis" value="300000" />  
+  
+        <property name="validationQuery" value="SELECT 'x'" />  
+        <property name="testWhileIdle" value="true" />  
+        <property name="testOnBorrow" value="false" />  
+        <property name="testOnReturn" value="false" />  
+        <property name="maxOpenPreparedStatements" value="20" />  
+        <property name="removeAbandoned" value="true" /> <!-- 打开removeAbandoned功能 -->  
+        <property name="removeAbandonedTimeout" value="1800" /> <!-- 1800秒，也就是30分钟 -->  
+        <property name="logAbandoned" value="true" /> <!-- 关闭abanded连接时输出错误日志 -->  
+    </bean>
+
+
+	<bean id="sqlsessionfactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource">
+		</property>
+		<property name="mapperLocations" value="classpath:cn/nengliangba/*/dao/*.xml">
+		</property>
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- sqlsessionfactory注入 -->
+		<property name="sqlSessionFactory" ref="sqlsessionfactory" />
+		<property name="basePackage" value="cn.nengliangba.*.dao"/>
+	</bean>
+	
+	<!-- 事务管理 -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 使用声明式事务-->
+	<tx:annotation-driven transaction-manager="txManager" />
+	
+
+</beans>
