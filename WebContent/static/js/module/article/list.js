@@ -12,9 +12,18 @@ $(document).ready(function(){
 			   success: function(data){
 				 var html = "";
 				 for(var i=0;i<data.length;i++){
-					 html += '<li><a href="'+_queryService+data[i].id+'" target="_blank">'+data[i].title+'</a></li>';
+					// html += '<li><a href="'+_queryService+data[i].id+'" target="_blank">'+data[i].title+'</a></li>';
+					 html += '<li>'+
+					 '<a href="'+_queryService+data[i].id+'" class="pic"><img src="'+data[i].titlePic+'" alt="'+data[i].title+'" /></a>'
+					 +
+					 '<h2 class="excerpt-tit"><a href="'+_queryService+data[i].id+'" >'+data[i].title+'</a></h2>'
+					 +
+					 '<p class="excerpt-desc">'+data[i].abstr+'</p>'
+					 +
+					 '<div class="excerpt-time">'+data[i].publishDate+'</div>'+
+					 '</li>'
 				 }
-				 $("#list").html(html);
+				 $("#article_list").html(html);
 			   }
 		 });
 	

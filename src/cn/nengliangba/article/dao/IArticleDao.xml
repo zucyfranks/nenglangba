@@ -30,7 +30,18 @@
 	</select>
 	
 	<select id="queryAllArticle" resultType="cn.nengliangba.article.entity.ArticleVO">
-		select article.id,article.title from article_info article
+		SELECT 
+		  article.id id,
+		  article.category_id categoryId,
+		  article.title title,
+		  article.title_pic titlePic,
+		  article.abstr abstr,
+		  article.author author,
+		  article.publish_date publishDate,
+		  article.reward_id rewardId,
+		  article.hits hits
+		FROM
+		  article_info article
 	</select>
 	
 </mapper>
