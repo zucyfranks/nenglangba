@@ -40,7 +40,7 @@ public class ArticleController {
 		return "/article/viewArticle";
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/toList")
 	public String gotoAllArticlePage(HttpServletRequest request){
 		return "/article/list";
 	}
@@ -83,12 +83,12 @@ public class ArticleController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public List<ArticleVO> queryArticleList(){
-		List<ArticleVO> article = new ArrayList<ArticleVO>();
+		List<ArticleVO> list = new ArrayList<ArticleVO>();
 		try {
-			article = articleService.queryArticleList();
+			list = articleService.queryArticleList();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return article;
+		return list;
 	}
 }
