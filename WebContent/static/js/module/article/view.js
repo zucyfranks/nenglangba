@@ -9,15 +9,12 @@ $(document).ready(function(){
 			   type: "GET",
 			   url: _viewService + id,
 			   success: function(msg){
+				   debugger
 				 console.log(msg);
-				 $("#title").val(msg.title);
-				 $("#categoryId").val(msg.categoryId);
-				 $("#abstr").val(msg.abstr);
-				 $("#author").val(msg.author);
-				 $("#owner").val(msg.owner);
-				 $("#publishDate").val(msg.publishDate);
-				 $("#origin").val(msg.origin);
-				 $("#titlePic").val(msg.titlePic);
+				 $("title").text(msg.title);
+				 $("#title").text(msg.title);
+				 $("#author").text(msg.author);
+				 $("#publishDate").text(msg.publishDate);
 				 $("#content").html(msg.content);
 			   }
 			});

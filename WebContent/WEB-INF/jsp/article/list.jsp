@@ -12,11 +12,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <meta name="viewport" content="width=device-width" />
-<link rel="stylesheet" type="text/css" media="screen" href="<%=basePath%>static/themes/article/style.css" />
+
 <link rel="shortcut icon" href="<%=basePath%>static/themes/article/img/favicon.ico" />
 <script src="<%=basePath%>static/js/jquery.min.js"></script>
 <script src="<%=basePath%>static/js/module/common.js"></script>
 <script src="<%=basePath%>static/js/module/article/list.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="<%=basePath%>static/themes/article/style.css" />
 <title>列表</title>
 <meta name="keywords" content="关键字" />
 <meta name="description" content="内容描述" />
@@ -56,6 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 分享代码 -->
 	<div class="baidufenxiang" style="overflow:auto;margin-bottom:10px">
 	<!-- Baidu Button BEGIN -->
+	<!--
 	<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
 		<a class="bds_bdhome"></a>
 		<a class="bds_renren"></a>
@@ -77,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" id="bdshell_js"></script>
 	<script type="text/javascript">
 	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
-	</script>
+	</script>-->
 	<!-- Baidu Button END -->
 	</div>
 	<!-- 分享代码 -->
@@ -119,16 +121,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="widget widget_text">			
 		<div class="textwidget">
 			<div style="margin-bottom: 18px;margin-top: 20px;">
-				<!-- 右侧上300x250 -->
-				<img src="<%=basePath%>static/images/ads/pc300x250_1.jpg"/>
+				<!-- 右侧上300x250 
+				<img src="<%=basePath%>static/images/ads/pc300x250_1.jpg"/>-->
 			</div>
 		</div>
 	</div>
 	<div class="widget widget_text">			
 		<div class="textwidget">
 			<div style="margin-bottom: 15px; display:none!important">
-				<!-- 百度ad -->
-				<img src="<%=basePath%>static/images/ads/m300x250_1.jpg"/>
+				<!-- 百度ad 
+				<img src="<%=basePath%>static/images/ads/m300x250_1.jpg"/>-->
 			</div>
 		</div>
 	</div>
@@ -162,8 +164,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div><div class="widget widget_text">			
 <div class="textwidget">
 <div style="margin-bottom: 15px;margin-top: 15px;">
-<!-- 右侧中300x250 -->
-<img src="<%=basePath%>static/images/ads/pc300x250_2.jpg"/>
+<!-- 右侧中300x250 
+<img src="<%=basePath%>static/images/ads/pc300x250_2.jpg"/>-->
 </div>
 </div>
 		</div>		<div class="widget widget_recent_entries">		<h3 class="widget-tit">最新发表</h3>		
@@ -214,11 +216,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="widget widget_text">			
 <div class="textwidget">
 <div style="margin-top: 15px; display:none!important"> 
-<!-- baidu-->
-<img src="<%=basePath%>static/images/ads/m300x250_2.jpg"/>
+<!-- baidu
+<img src="<%=basePath%>static/images/ads/m300x250_2.jpg"/>-->
 </div>
 
 <!-- JiaThis Button BEGIN -->
+<!--
 <div class="jiathis_share_slide jiathis_share_24x24" id="jiathis_share_slide">
 <div class="jiathis_share_slide_top" id="jiathis_share_title"></div>
 <div class="jiathis_share_slide_inner">
@@ -243,6 +246,7 @@ var jiathis_config = {data_track_clickback:'true'
 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=892166" charset="utf-8"></script>	
 <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_slide.js" charset="utf-8"></script>
 </div></div></div>
+-->
 <!-- JiaThis Button END --></div>
 		</div></div></div>
 
